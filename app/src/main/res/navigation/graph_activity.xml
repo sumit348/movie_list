@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splash">
+
+    <fragment
+        android:id="@+id/splash"
+        android:name="com.example.moviedb.ui.screen.splash.SplashFragment"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/toMovieListPager"
+            app:destination="@id/movie_list_pager"
+            app:popUpTo="@id/splash"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/toMoviePager"
+            app:destination="@id/movie_pager"
+            app:popUpTo="@id/splash"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/toPagingMovie"
+            app:destination="@id/pagingMovie"
+            app:popUpTo="@id/splash"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/toPopularMovie"
+            app:destination="@id/popularMovie"
+            app:popUpTo="@id/splash"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/toComposeActivity"
+            app:destination="@id/composeActivity"
+            app:popUpTo="@id/splash"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/movieListPager"
+        android:name="com.example.moviedb.ui.screen.movielistpager.MovieListPagerFragment"
+        tools:layout="@layout/fragment_movie_list_pager" />
+
+    <fragment
+        android:id="@+id/moviePager"
+        android:name="com.example.moviedb.ui.screen.moviepager.MoviePagerFragment"
+        tools:layout="@layout/fragment_movie_pager" />
+
+    <fragment
+        android:id="@+id/pagingMovie"
+        android:name="com.example.moviedb.ui.screen.paging.PagingMovieFragment"
+        tools:layout="@layout/fragment_paging" />
+
+    <fragment
+        android:id="@+id/popularMovie"
+        android:name="com.example.moviedb.ui.screen.popularmovie.PopularMovieFragment"
+        tools:layout="@layout/fragment_loadmore_refresh" />
+
+    <include app:graph="@navigation/graph_movie_detail" />
+
+    <action
+        android:id="@+id/toGraphMovieDetail"
+        app:destination="@id/graphMovieDetail"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right">
+        <argument
+            android:name="movie"
+            app:argType="com.example.moviedb.data.model.Movie" />
+    </action>
+
+    <activity
+        android:id="@+id/composeActivity"
+        android:name="com.example.moviedb.compose.ComposeActivity" />
+</navigation>
